@@ -5,8 +5,8 @@ function Zip(props) {
     const [validationError, setValidationError] = useState(null);
 
     const validate = (event) => {
-        const zipCodePattern = /^\d{20}$/;
-        const valid = zipCodePattern.test(event.target.value);
+        const zipCodePattern = /![a-zA-Z]/;
+        const valid = zipCodePattern.test(event.target.value);\
         if (!valid) {
             setValidationError('* should be a valid place name');
             props.clearResponse();
