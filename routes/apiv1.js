@@ -32,8 +32,7 @@ exports.getWeather = function(req, res) {
     			return res.status(200).send(response);
     		}
     		return res.status(400).send({msg:'Failed'});
-    	}
-		document.getElementById('loc').value = zip;    	
+    	}   	
     });
 
 };
