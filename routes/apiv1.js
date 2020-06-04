@@ -16,7 +16,7 @@ exports.getWeather = function(req, res) {
 		return res.status(400).send('location missing');
 	}
 
-	var aurl = OPENWEATHERURL + '&q=' + zip + ',nz';
+	var aurl = OPENWEATHERURL + '&q=' + zip.toString() + ',nz';
 
 	request({
 		method: 'GET',
