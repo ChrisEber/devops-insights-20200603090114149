@@ -15,7 +15,7 @@ exports.getWeather = function(req, res) {
 		return res.status(400).send('location missing');
 	}
 
-	var aurl = OPENWEATHERURL + '&q=' + 'Hamilton' + ',nz';
+	var aurl = OPENWEATHERURL + '&q=' + zip;
 
 	request({
 		method: 'GET',
@@ -44,7 +44,7 @@ exports.getWeather3 = function(req, res) {
 		return res.status(400).send('zip missing');
 	}
 
-	var aurl = OPENWEATHERURL + '&q=' + zip.toString() + ',nz';
+	var aurl = OPENWEATHERURL + '&q=' + zip;
 
 	request({
 		method: 'GET',
