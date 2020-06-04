@@ -7,7 +7,7 @@ var request = REQUEST.defaults( {
     strictSSL: false
 });
 
-var OPENWEATHERURL = "api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid=0pIuZbBj5LTB6ETaG_ax9vLtX8XFPGHwyZFTtpkuFiEt&units=metric";
+var OPENWEATHERURL = "api.openweathermap.org/data/2.5/weather?appid=3f1b2eb61bca8023109efdc36afc3f9b&units=metric";
 //Old map api https://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=imperial
 
 exports.getWeather = function(req, res) {
@@ -28,7 +28,7 @@ exports.getWeather = function(req, res) {
     		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
+    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
     		}
@@ -57,7 +57,7 @@ exports.getWeather3 = function(req, res) {
     		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
+    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
     		}
