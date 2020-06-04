@@ -12,7 +12,7 @@ function Zip(props) {
             setValidationError('* should be a valid place name');
             props.clearResponse();
         } else {
-            setValidationError('res');
+            setValidationError(${res});
             props.onZipChange(event.target.value);
         }
     };
