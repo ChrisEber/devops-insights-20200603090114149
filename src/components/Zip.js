@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import res from `../containers/AppContainer`;
 
 function Zip(props) {
 
@@ -12,7 +11,7 @@ function Zip(props) {
             setValidationError('* should be a valid place name');
             props.clearResponse();
         } else {
-            setValidationError(${res});
+            setValidationError(' ');
             props.onZipChange(event.target.value);
         }
     };
