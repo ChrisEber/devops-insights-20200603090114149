@@ -8,7 +8,6 @@ var request = REQUEST.defaults( {
 });
 
 var OPENWEATHERURL = "http://api.openweathermap.org/data/2.5/weather?appid=3f1b2eb61bca8023109efdc36afc3f9b&units=metric";
-//Old map api https://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=imperial
 
 exports.getWeather = function(req, res) {
 	var zip = req.query.zip;
@@ -16,7 +15,7 @@ exports.getWeather = function(req, res) {
 		return res.status(400).send('location missing');
 	}
 
-	var aurl = OPENWEATHERURL + '&q=' + zip.toString() + ',nz';
+	var aurl = OPENWEATHERURL + '&q=' + 'Hamilton' + ',nz';
 
 	request({
 		method: 'GET',
@@ -28,7 +27,7 @@ exports.getWeather = function(req, res) {
     		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
+    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
     		}
@@ -45,7 +44,7 @@ exports.getWeather3 = function(req, res) {
 		return res.status(400).send('zip missing');
 	}
 
-	var aurl = OPENWEATHERURL + '&q=' + zip + ',nz';
+	var aurl = OPENWEATHERURL + '&q=' + zip.toString() + ',nz';
 
 	request({
 		method: 'GET',
@@ -57,7 +56,7 @@ exports.getWeather3 = function(req, res) {
     		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
+    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
     		}
