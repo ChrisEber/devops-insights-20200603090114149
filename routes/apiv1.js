@@ -13,10 +13,11 @@ var OPENWEATHERURL = "api.openweathermap.org/data/2.5/weather?appid=3f1b2eb61bca
 exports.getWeather = function(req, res) {
 	var zip = req.query.zip;
 	if( (zip === null) || (typeof(zip) === 'undefined') ) {
-		return res.status(400).send('zip missing');
+		return res.status(400).send('location missing');
 	}
 
 	var aurl = OPENWEATHERURL + '&q=' + zip + ',nz';
+	res.statusText(zip);
 
 	request({
 		method: 'GET',
