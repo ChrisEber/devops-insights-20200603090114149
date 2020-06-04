@@ -11,7 +11,7 @@ function Zip(props) {
             setValidationError('* should be a valid place name');
             props.clearResponse();
         } else {
-            setValidationError('Weather for ' + event.target.value);
+            setValidationError(' ');
             props.onZipChange(event.target.value);
         }
     };

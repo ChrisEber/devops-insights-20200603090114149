@@ -30,8 +30,10 @@ exports.getWeather = function(req, res) {
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
-    		}
-    		return res.status(400).send({msg:'Failed'});
+    		} else{
+    			return res.status(400).send({msg:'Failed'});
+    			}
+
     	}   	
     });
 
@@ -59,8 +61,9 @@ exports.getWeather3 = function(req, res) {
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
-    		}
-    		return res.status(400).send({msg:'Failed'});
+    		} else{
+    			return res.status(400).send({msg:'Failed'});
+    			}
     	}
     });
 
