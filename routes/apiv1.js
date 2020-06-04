@@ -7,7 +7,7 @@ var request = REQUEST.defaults( {
     strictSSL: false
 });
 
-var OPENWEATHERURL = "api.openweathermap.org/data/2.5/weather?appid=3f1b2eb61bca8023109efdc36afc3f9b&units=metric";
+var OPENWEATHERURL = "http://api.openweathermap.org/data/2.5/weather?appid=3f1b2eb61bca8023109efdc36afc3f9b&units=metric";
 //Old map api https://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=imperial
 
 exports.getWeather = function(req, res) {
@@ -17,7 +17,6 @@ exports.getWeather = function(req, res) {
 	}
 
 	var aurl = OPENWEATHERURL + '&q=' + zip + ',nz';
-	res.statusText(zip);
 
 	request({
 		method: 'GET',
