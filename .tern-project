@@ -6,7 +6,8 @@
 	"libs": [
 		"ecma5",
 		"ecma6",
-		"ecma7"
+		"ecma7",
+		"browser"
 	],
 	"loadEagerly": [],
 	"sourceType": "module"
