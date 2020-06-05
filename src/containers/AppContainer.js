@@ -11,7 +11,7 @@ function AppContainer(props) {
         //console.log(`--------- fetchData called zip:${zipValue}`)
         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?appid=3f1b2eb61bca8023109efdc36afc3f9b&units=metric&q=${zipValue},nz`)
         const json = await res.json()
-        //console.log(json);
+        //console.log(json);        
         setResponseData(json);
     }
 
