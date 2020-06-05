@@ -45,16 +45,31 @@
     -->
    <div id='map' style='width: 400px; height: 300px;'></div>
 	<script>
+	
+		var weather;
+  		function setup(){
+  			loadJSON('https://api.openweathermap.org/data/2.5/weather?appid=3f1b2eb61bca8023109efdc36afc3f9b&units=metric&q=Hamilton,nz');
+  		}
+  		
+  		function gotData(data){
+  			weather = data;
+  		}
+  		
+  		var lng = weather.coord.lon;
+  		var lat = weather.coord.lat;
+  		
 	  mapboxgl.accessToken = 'pk.eyJ1IjoiY2UyOSIsImEiOiJja2IxZDV5djEwY2FhMnByb2FvMnliM2Q1In0.uR-5IvvUa2flkbkipfoGXw';
 	  var map = new mapboxgl.Map({
 	    container: 'map',
 	    style: 'mapbox://styles/mapbox/streets-v11',
-	    enter: [40.9006, 174.8860], // Starting position [lng, lat]
+	    center: [lng, lat], // Starting position [lng, lat]
     	zoom: 30,
-	  });
-	  
-	  var marker = new mapboxgl.Marker() // initialize a new marker
-  		.setLngLat([37.7870, 175.2793]) // Marker [lng, lat] coordinates
+	  });  
+	   		
+  		
+  		
+  		 var marker = new mapboxgl.Marker() // initialize a new marker
+  		.setLngLat([lng, lat]) // Marker [lng, lat] coordinates
   		.addTo(map); // Add the marker to the map
   
 	</script>
