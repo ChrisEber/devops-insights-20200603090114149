@@ -48,8 +48,15 @@
 	  mapboxgl.accessToken = 'pk.eyJ1IjoiY2UyOSIsImEiOiJja2IxZDV5djEwY2FhMnByb2FvMnliM2Q1In0.uR-5IvvUa2flkbkipfoGXw';
 	  var map = new mapboxgl.Map({
 	    container: 'map',
-	    style: 'mapbox://styles/mapbox/streets-v11'
+	    style: 'mapbox://styles/mapbox/streets-v11',
+	    enter: [40.9006, 174.8860], // Starting position [lng, lat]
+    	zoom: 30,
 	  });
+	  
+	  var marker = new mapboxgl.Marker() // initialize a new marker
+  		.setLngLat([37.7870, 175.2793]) // Marker [lng, lat] coordinates
+  		.addTo(map); // Add the marker to the map
+  
 	</script>
 
   </body>
