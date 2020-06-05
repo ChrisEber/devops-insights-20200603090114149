@@ -43,7 +43,7 @@
     -->
    <div id='map' style='width: 400px; height: 300px;'></div>
 	<script>
-	
+	window.addEventListner('load', setup);
 		var weather;
 		var lng;
 		var lat;
@@ -53,22 +53,28 @@
   		
   		function gotData(data){
   			weather = data;
+  			showLocation();
+  		}		  		
+  		
+  		function showLocation(){  			
   		 	lng = weather.coord.lon;
   			lat = weather.coord.lat;
-  		}		  		
+  			
+  			var marker = new mapboxgl.Marker() // initialize a new marker
+  				.setLngLat([lng, lat]) // Marker [lng, lat] coordinates
+  				.addTo(map); // Add the marker to the map
+  		}
   		
 		  mapboxgl.accessToken = 'pk.eyJ1IjoiY2UyOSIsImEiOiJja2IxZDV5djEwY2FhMnByb2FvMnliM2Q1In0.uR-5IvvUa2flkbkipfoGXw';
 		  var map = new mapboxgl.Map({
 		    container: 'map',
 		    style: 'mapbox://styles/mapbox/streets-v11',
 		    center: [176, -36.848461], // Starting position [lng, lat]
-	    	zoom: 50,
+	    	zoom: 500,
 		  });     		
   		
   		
-  		 var marker = new mapboxgl.Marker() // initialize a new marker
-  		.setLngLat([lng, lat]) // Marker [lng, lat] coordinates
-  		.addTo(map); // Add the marker to the map
+  		 
   		
   
 	</script>
