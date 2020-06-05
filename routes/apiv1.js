@@ -29,8 +29,6 @@ exports.getWeather = function(req, res) {
     		if(body.cod === 200) {
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
     			var response = {city: body.name, weather: weath};
-    			var coordX = body.coord[0].lon;
-    			var coordY = body.coord[0].lat;
     			return res.status(200).send(response);
     		}
     		return res.status(400).send({msg:'Failed'});
