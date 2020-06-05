@@ -1,7 +1,5 @@
-/*eslint-env es_modules */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -47,30 +45,31 @@
 	<script>
 	
 		var weather;
+		var lng;
+		var lat;
   		function setup(){
-  			loadJSON('https://api.openweathermap.org/data/2.5/weather?appid=3f1b2eb61bca8023109efdc36afc3f9b&units=metric&q=Hamilton,nz');
+  			loadJSON('https://api.openweathermap.org/data/2.5/weather?appid=3f1b2eb61bca8023109efdc36afc3f9b&units=metric&q=Hamilton,nz', gotData);
   		}
   		
   		function gotData(data){
   			weather = data;
-  		}
+  		 	lng = weather.coord.lon;
+  			lat = weather.coord.lat;
+  		}		  		
   		
-  		var lng = weather.coord.lon;
-  		var lat = weather.coord.lat;
-  		
-	  mapboxgl.accessToken = 'pk.eyJ1IjoiY2UyOSIsImEiOiJja2IxZDV5djEwY2FhMnByb2FvMnliM2Q1In0.uR-5IvvUa2flkbkipfoGXw';
-	  var map = new mapboxgl.Map({
-	    container: 'map',
-	    style: 'mapbox://styles/mapbox/streets-v11',
-	    center: [175.28, -37.78], // Starting position [lng, lat]
-    	zoom: 30,
-	  });  
-	   		
+		  mapboxgl.accessToken = 'pk.eyJ1IjoiY2UyOSIsImEiOiJja2IxZDV5djEwY2FhMnByb2FvMnliM2Q1In0.uR-5IvvUa2flkbkipfoGXw';
+		  var map = new mapboxgl.Map({
+		    container: 'map',
+		    style: 'mapbox://styles/mapbox/streets-v11',
+		    center: [lng, lat], // Starting position [lng, lat]
+	    	zoom: 50,
+		  });     		
   		
   		
   		 var marker = new mapboxgl.Marker() // initialize a new marker
-  		.setLngLat([175.28, -37.78]) // Marker [lng, lat] coordinates
+  		.setLngLat([lng, lat]) // Marker [lng, lat] coordinates
   		.addTo(map); // Add the marker to the map
+  		
   
 	</script>
 
