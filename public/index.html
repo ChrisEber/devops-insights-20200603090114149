@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+/*eslint-env es_modules */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -28,6 +29,16 @@
 	<link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
 
     <title>Demo DOI</title>
+    <style>
+    .marker{
+    	background-image: url('mapPin.jpg'); 
+    	background-size: cover;
+    	width: 5px;
+    	height: 10px;
+    	border-radius: 50%;
+    	cursor: pointer;
+    }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -44,10 +55,26 @@
     -->
     <div id='map' style='width: 400px; height: 300px;'></div>
 	<script>
+	import lat, { coordX } from 'apiv1';
+	import lon, { coordY } from 'apic1';
+	
 		mapboxgl.accessToken = 'pk.eyJ1IjoiY2UyOSIsImEiOiJja2IxZDV5djEwY2FhMnByb2FvMnliM2Q1In0.uR-5IvvUa2flkbkipfoGXw';
 		var map = new mapboxgl.Map({
 			container: 'map',
 			style: 'mapbox://styles/mapbox/streets-v11'
+	});
+	
+	// add markers to map
+	geojson.features.forEach(function(marker) {
+	
+	  // create a HTML element for each feature
+	  var el = document.createElement('div');
+	  el.className = 'marker';
+	
+	  // make a marker for each feature and add to the map
+	  new mapboxgl.Marker(el)
+	    .setLngLat(lat,lon)
+	    .addTo(map);
 	});
 </script>
   </body>
